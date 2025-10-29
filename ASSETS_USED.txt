@@ -1,0 +1,14 @@
+assets/demo-animation.gif
+assets/demo-feed.jpg
+assets/demo-system.png
+assets/js/app-config.js
+assets/js/firebase-config.js
+assets/js/script.js
+assets/js/social-links.js
+assets/logo-white.png
+assets/logo.ico
+assets/logo.png
+assets/payment-qr.png
+assets/qr.png
+assets/qr_monthly.png
+assets/qr_yearly.png

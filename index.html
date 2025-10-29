@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GuardianCare - AI Fall Detection</title>
+    <link rel="icon" type="image/x-icon" href="assets/logo.ico">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="assets/js/firebase-config.js"></script>
+  <script src="assets/js/app-config.js"></script>
+</head>
+<body class="bg-gray-50">
+    <custom-navbar></custom-navbar>
+    
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="relative bg-indigo-900 text-white py-20">
+            <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <img src="assets/logo.png" alt="GuardianCare Logo" class="h-24 mb-6">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">AI-Powered Fall Detection</h1>
+                    <p class="text-xl mb-8">24/7 protection for your loved ones with real-time alerts and emergency response</p>
+                    <div class="flex gap-4">
+                        <button id="loginBtn" class="bg-white text-indigo-900 px-6 py-3 rounded-lg font-semibold hover:bg-indigo-100 transition">Login</button>
+                        <button id="registerBtn" class="border-2 border-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-800 transition">Register</button>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="assets/demo-system.png" alt="System Demo" class="rounded-xl shadow-2xl">
+                </div>
+            </div>
+          <div class="mt-6">
+                <button id="openDemoBtn" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">▶ Play demo</button>
+              </div>
+            </section>
+
+        <!-- Features Section -->
+        <section class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-16">How GuardianCare Works</h2>
+                <div class="grid md:grid-cols-3 gap-10">
+                    <div class="text-center">
+                        <div class="bg-indigo-100 w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-4">
+                            <i data-feather="video" class="text-indigo-700 w-10 h-10"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Smart Monitoring</h3>
+                        <p class="text-gray-600">Our AI continuously analyzes video feeds for fall incidents with 98% accuracy</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-indigo-100 w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-4">
+                            <i data-feather="alert-circle" class="text-indigo-700 w-10 h-10"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Instant Alerts</h3>
+                        <p class="text-gray-600">Get immediate notifications via SMS, email, and app when a fall is detected</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-indigo-100 w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-4">
+                            <i data-feather="shield" class="text-indigo-700 w-10 h-10"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Emergency Response</h3>
+                        <p class="text-gray-600">Optional connection to emergency services for rapid assistance</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Auth Modals -->
+        <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+            <div class="bg-white rounded-lg p-8 max-w-md w-full">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-2xl font-bold">Login</h3>
+                    <button id="closeLoginModal" class="text-gray-500 hover:text-gray-700">
+                        <i data-feather="x"></i>
+                    </button>
+                </div>
+                <form id="loginForm" class="space-y-4">
+                    <div>
+                        <label class="block text-gray-700 mb-2">Email</label>
+                        <input type="email" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2">Password</label>
+                        <input type="password" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    </div>
+                    <button type="submit" class="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition">Login</button>
+                </form>
+                <p class="mt-4 text-center">Don't have an account? <a href="#" id="showRegister" class="text-indigo-600 hover:underline">Register</a></p>
+            </div>
+        </div>
+
+        <div id="registerModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+            <div class="bg-white rounded-lg p-8 max-w-md w-full">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-2xl font-bold">Register</h3>
+                    <button id="closeRegisterModal" class="text-gray-500 hover:text-gray-700">
+                        <i data-feather="x"></i>
+                    </button>
+                </div>
+                <form id="registerForm" class="space-y-4">
+                    <div>
+                        <label class="block text-gray-700 mb-2">Full Name</label>
+                        <input type="text" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2">Email</label>
+                        <input type="email" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2">Password</label>
+                        <input type="password" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2">Confirm Password</label>
+                        <input type="password" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    </div>
+                    <button type="submit" class="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition">Register</button>
+                </form>
+                <p class="mt-4 text-center">Already have an account? <a href="#" id="showLogin" class="text-indigo-600 hover:underline">Login</a></p>
+            </div>
+        </div>
+    </main>
+
+    <custom-footer></custom-footer>
+    
+    <script src="components/navbar.js"></script>
+    <script src="components/footer.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script>
+        feather.replace();
+        // Initialize Firebase
+        const firebaseConfig = {
+   apiKey: "AIzaSyBpCE7ns40c9olZBHF8Duuffa_keiu4SKY",
+  authDomain: "guardian-care-web.firebaseapp.com",
+  projectId: "guardian-care-web",
+  storageBucket: "guardian-care-web.firebasestorage.app",
+  messagingSenderId: "576030079510",
+  appId: "1:576030079510:web:b8047803944e4d6c079337",
+  measurementId: "G-Q4R1P2LX7Z"
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+<style>
+.gc-fab { position: fixed; right: 16px; bottom: 16px; display: flex; flex-direction: column; gap: 10px; z-index: 60; }
+.gc-fab a { width: 48px; height: 48px; border-radius: 9999px; display: flex; align-items: center; justify-content: center;
+  background: white; box-shadow: 0 4px 14px rgba(0,0,0,0.15); border: 1px solid #e5e7eb; text-decoration: none; }
+</style>
+<div class="gc-fab">
+  <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="fb" style="width:22px;height:22px"/></a>
+  <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="ig" style="width:22px;height:22px"/></a>
+  <a href="https://zalo.me/" target="_blank" aria-label="Zalo"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/zalo.svg" alt="zalo" style="width:22px;height:22px"/></a>
+</div>
+
+
+  <!-- Demo Modal (YouTube) -->
+  <div id="demoModal" class="fixed inset-0 bg-black bg-opacity-40 hidden items-center justify-center z-50">
+    <div class="bg-white rounded-xl shadow-xl p-0 max-w-3xl w-full overflow-hidden">
+      <div class="flex justify-between items-center px-4 py-3 border-b">
+        <h3 class="text-lg font-semibold">Product Demo</h3>
+        <button id="closeDemoBtn" class="text-gray-500 hover:text-black">&times;</button>
+      </div>
+      <div class="relative" style="padding-top: 56.25%;">
+        <iframe id="demoFrame" class="absolute inset-0 w-full h-full"
+                src="" title="YouTube video player" frameborder="0" allow="autoplay; encrypted-media"
+                allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+  <script src="assets/js/social-links.js"></script>
+</body>
+
+</html>

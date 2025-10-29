@@ -1,0 +1,25 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Admin allowlist (used only for READ by client to verify admin email/uid)
+    match /admins/{docId} {
+      allow read: if request.auth != null; // NOTE: restrict further in production
+      allow write: if false;
+    }
+
+    // Users profile and nested collections
+    match /users/{userId} {
+      // Owner can read/write own doc
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+
+      // Admins (via custom claims) can manage any user
+      allow read, write: if request.auth != null && request.auth.token.admin == true;
+
+      // Bills subcollection
+      match /bills/{billId} {
+        allow read, write: if request.auth != null && (request.auth.uid == userId || request.auth.token.admin == true);
+      }
+    }
+  }
+}

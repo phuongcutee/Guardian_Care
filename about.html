@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - GuardianCare</title>
+  <link rel="icon" type="image/x-icon" href="assets/logo.ico">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="assets/js/firebase-config.js"></script>
+  <script src="assets/js/app-config.js"></script>
+</head>
+<body class="bg-gray-50">
+  <custom-navbar></custom-navbar>
+  <main class="container mx-auto px-6 py-12">
+
+<h1 class="text-3xl font-bold mb-4">About GuardianCare</h1>
+<p class="text-gray-700 leading-relaxed max-w-2xl">GuardianCare is a simple web dashboard for monitoring fall-detection devices and alerts.</p>
+
+  </main>
+  <custom-footer></custom-footer>
+  <script src="components/navbar.js"></script>
+  <script src="components/footer.js"></script>
+  <script src="assets/js/script.js"></script>
+
+<style>
+.gc-fab { position: fixed; right: 16px; bottom: 16px; display: flex; flex-direction: column; gap: 10px; z-index: 60; }
+.gc-fab a { width: 48px; height: 48px; border-radius: 9999px; display: flex; align-items: center; justify-content: center;
+  background: white; box-shadow: 0 4px 14px rgba(0,0,0,0.15); border: 1px solid #e5e7eb; text-decoration: none; }
+</style>
+<div class="gc-fab">
+  <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="fb" style="width:22px;height:22px"/></a>
+  <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="ig" style="width:22px;height:22px"/></a>
+  <a href="https://zalo.me/" target="_blank" aria-label="Zalo"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/zalo.svg" alt="zalo" style="width:22px;height:22px"/></a>
+</div>
+
+  <script src="assets/js/social-links.js"></script>
+</body>
+</html>

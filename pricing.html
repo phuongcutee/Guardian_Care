@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing - GuardianCare</title>
+  <link rel="icon" type="image/x-icon" href="assets/logo.ico">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="assets/js/firebase-config.js"></script>
+  <script src="assets/js/app-config.js"></script>
+</head>
+<body class="bg-gray-50">
+  <custom-navbar></custom-navbar>
+  <main class="container mx-auto px-6 py-12">
+
+<h1 class="text-3xl font-bold mb-10">Pricing</h1>
+<div class="grid md:grid-cols-3 gap-6">
+  <div class="bg-white rounded-xl shadow p-6">
+    <h2 class="text-xl font-semibold mb-2">Free</h2>
+    <p class="text-2xl font-bold mb-4">0đ</p>
+    <ul class="text-gray-700 mb-4 list-disc pl-5">
+      <li>Basic dashboard</li><li>Community support</li>
+    </ul>
+    <button class="bg-gray-800 text-white px-4 py-2 rounded" data-plan="free">Get Started</button>
+  </div>
+  <div class="bg-white rounded-xl shadow p-6 border-2 border-indigo-600">
+    <h2 class="text-xl font-semibold mb-2">Monthly</h2>
+    <p class="text-2xl font-bold mb-4">69.000đ / tháng</p>
+    <ul class="text-gray-700 mb-4 list-disc pl-5">
+      <li>24/7 monitoring</li><li>Priority support</li><li>Email alerts</li>
+    </ul>
+    <button class="bg-indigo-600 text-white px-4 py-2 rounded" data-plan="monthly">Choose Monthly</button>
+  </div>
+  <div class="bg-white rounded-xl shadow p-6">
+    <h2 class="text-xl font-semibold mb-2">Yearly</h2>
+    <p class="text-2xl font-bold mb-4">690.000đ / năm</p>
+    <ul class="text-gray-700 mb-4 list-disc pl-5">
+      <li>All Monthly features</li><li>2 months free</li><li>Priority SLA</li>
+    </ul>
+    <button class="bg-indigo-600 text-white px-4 py-2 rounded" data-plan="yearly">Choose Yearly</button>
+  </div>
+</div>
+
+  
+<!-- QR Modal -->
+<div id="qrModal" class="fixed inset-0 bg-black bg-opacity-40 hidden items-center justify-center z-50">
+  <div class="bg-white rounded-xl shadow-xl p-6 max-w-md w-full">
+    <div class="flex justify-between items-center mb-4">
+      <h3 id="qrTitle" class="text-xl font-semibold">Plan</h3>
+      <button id="qrClose" class="text-gray-500 hover:text-black">&times;</button>
+    </div>
+    <img id="qrImage" src="assets/qr.png" alt="QR" class="w-full rounded mb-4">
+    <div id="planFeatures" class="text-gray-700 text-sm mb-4"></div>
+    <div class="text-right">
+      <button id="qrOk" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">OK</button>
+    </div>
+  </div>
+</div>
+
+</main>
+  <custom-footer></custom-footer>
+  <script src="components/navbar.js"></script>
+  <script src="components/footer.js"></script>
+  <script src="assets/js/script.js"></script>
+
+<style>
+.gc-fab { position: fixed; right: 16px; bottom: 16px; display: flex; flex-direction: column; gap: 10px; z-index: 60; }
+.gc-fab a { width: 48px; height: 48px; border-radius: 9999px; display: flex; align-items: center; justify-content: center;
+  background: white; box-shadow: 0 4px 14px rgba(0,0,0,0.15); border: 1px solid #e5e7eb; text-decoration: none; }
+</style>
+<div class="gc-fab">
+  <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="fb" style="width:22px;height:22px"/></a>
+  <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="ig" style="width:22px;height:22px"/></a>
+  <a href="https://zalo.me/" target="_blank" aria-label="Zalo"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/zalo.svg" alt="zalo" style="width:22px;height:22px"/></a>
+</div>
+
+  <script src="assets/js/social-links.js"></script>
+</body>
+</html>
