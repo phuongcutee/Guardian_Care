@@ -1,42 +1,303 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About - GuardianCare</title>
-  <link rel="icon" type="image/x-icon" href="assets/logo.ico">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Giới thiệu & Chính sách – GuardianCare</title>
+
+  <!-- SEO -->
+  <meta name="description" content="GuardianCare: bảng điều khiển theo dõi phát hiện té ngã và cảnh báo thời gian thực. Bao gồm giới thiệu, quyền riêng tư, điều khoản, và bảo mật." />
+  <link rel="canonical" href="https://your-domain.example/about.html" />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Giới thiệu & Chính sách – GuardianCare" />
+  <meta property="og:description" content="Giới thiệu, quyền riêng tư, điều khoản sử dụng, và bảo mật của GuardianCare." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://your-domain.example/about.html" />
+  <meta property="og:image" content="https://your-domain.example/assets/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" type="image/x-icon" href="assets/logo.ico" />
+  <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/feather-icons"></script>
+
+  <!-- Firebase (nếu dùng) -->
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
   <script src="assets/js/firebase-config.js"></script>
   <script src="assets/js/app-config.js"></script>
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "GuardianCare",
+    "url": "https://your-domain.example/",
+    "logo": "https://your-domain.example/assets/logo.png",
+    "sameAs": [
+      "https://www.facebook.com/yourpage",
+      "https://www.instagram.com/yourpage"
+    ]
+  }
+  </script>
+
+  <style>
+    .gc-fab { position: fixed; right: 16px; bottom: 16px; display: flex; flex-direction: column; gap: 10px; z-index: 60; }
+    .gc-fab a { width: 48px; height: 48px; border-radius: 9999px; display: flex; align-items: center; justify-content: center;
+      background: white; box-shadow: 0 4px 14px rgba(0,0,0,0.15); border: 1px solid #e5e7eb; text-decoration: none; }
+    .toc-sticky { position: sticky; top: 72px; }
+    .kbd { background:#111827; color:#fff; border-radius:6px; padding:2px 6px; font-size:.75rem; }
+  </style>
 </head>
-<body class="bg-gray-50">
+<body class="bg-gray-50 text-gray-800">
   <custom-navbar></custom-navbar>
-  <main class="container mx-auto px-6 py-12">
 
-<h1 class="text-3xl font-bold mb-4">About GuardianCare</h1>
-<p class="text-gray-700 leading-relaxed max-w-2xl">GuardianCare is a simple web dashboard for monitoring fall-detection devices and alerts.</p>
+  <main class="container mx-auto px-6 py-10">
+    <!-- TOC -->
+    <nav class="mb-8 bg-white border rounded-2xl p-4 shadow-sm">
+      <div class="flex flex-wrap gap-2">
+        <a href="#about"   class="px-3 py-2 rounded-xl border hover:bg-gray-50">Về GuardianCare</a>
+        <a href="#privacy" class="px-3 py-2 rounded-xl border hover:bg-gray-50">Chính sách quyền riêng tư</a>
+        <a href="#terms"   class="px-3 py-2 rounded-xl border hover:bg-gray-50">Điều khoản sử dụng</a>
+        <a href="#security"class="px-3 py-2 rounded-xl border hover:bg-gray-50">Bảo mật & công bố lỗ hổng</a>
+      </div>
+    </nav>
 
+    <div class="grid lg:grid-cols-12 gap-8">
+      <!-- Content -->
+      <div class="lg:col-span-9 space-y-12">
+        <!-- ABOUT -->
+        <section id="about" aria-labelledby="about-title">
+          <h1 id="about-title" class="text-3xl md:text-4xl font-bold mb-3">Về GuardianCare</h1>
+          <p class="text-gray-700 max-w-3xl">
+            GuardianCare là bảng điều khiển web để theo dõi thiết bị phát hiện té ngã và cảnh báo theo thời gian thực
+            cho gia đình và người chăm sóc. Mục tiêu: hiển thị sự cố nhanh, giảm thời gian phản hồi, và ghi nhận dữ liệu an toàn.
+          </p>
+
+          <!-- Core values -->
+          <div class="grid md:grid-cols-3 gap-6 mt-8">
+            <div class="p-5 bg-white rounded-2xl shadow-sm border">
+              <div class="flex items-center gap-2 mb-2">
+                <i data-feather="activity" class="w-5 h-5"></i>
+                <span class="font-medium">Phản hồi nhanh</span>
+              </div>
+              <p class="text-sm text-gray-600">Thông báo sự cố theo thời gian thực tới người nhận cảnh báo đã chỉ định.</p>
+            </div>
+            <div class="p-5 bg-white rounded-2xl shadow-sm border">
+              <div class="flex items-center gap-2 mb-2">
+                <i data-feather="shield" class="w-5 h-5"></i>
+                <span class="font-medium">Ưu tiên quyền riêng tư</span>
+              </div>
+              <p class="text-sm text-gray-600">Thu thập tối thiểu. Mã hóa truyền tải. Tùy chọn xoá dữ liệu theo yêu cầu.</p>
+            </div>
+            <div class="p-5 bg-white rounded-2xl shadow-sm border">
+              <div class="flex items-center gap-2 mb-2">
+                <i data-feather="check-circle" class="w-5 h-5"></i>
+                <span class="font-medium">Đơn giản và rõ ràng</span>
+              </div>
+              <p class="text-sm text-gray-600">Giao diện gọn. Dễ triển khai cho gia đình và cơ sở chăm sóc.</p>
+            </div>
+          </div>
+
+          <!-- How it works -->
+          <div class="mt-10">
+            <h2 class="text-2xl font-semibold mb-3">Cách hệ thống vận hành</h2>
+            <ol class="list-decimal pl-6 space-y-2 text-gray-700">
+              <li>Thiết bị/ứng dụng thu tín hiệu tư thế và gửi sự kiện lên dịch vụ xử lý.</li>
+              <li>Thuật toán phát hiện té ngã tạo cảnh báo khi vượt ngưỡng tự tin đã cấu hình.</li>
+              <li>Trang quản trị và ứng dụng hiển thị cảnh báo, đồng thời gửi thông báo tới người nhận.</li>
+            </ol>
+            <p class="text-xs text-gray-500 mt-2">
+              Lưu ý: ngưỡng và kênh cảnh báo có thể tuỳ chỉnh trong phần Cài đặt của tài khoản.
+            </p>
+          </div>
+
+          <!-- Data & compliance -->
+          <div class="mt-10">
+            <h2 class="text-2xl font-semibold mb-3">Dữ liệu & tuân thủ</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div class="p-5 bg-white rounded-2xl shadow-sm border">
+                <h3 class="font-medium mb-2">Những gì có thể thu thập</h3>
+                <ul class="list-disc pl-6 text-sm text-gray-700 space-y-1">
+                  <li>Thông tin tài khoản: email, tên hồ sơ.</li>
+                  <li>Sự kiện phát hiện: thời gian, trạng thái, mã thiết bị.</li>
+                  <li>Nhật ký kỹ thuật: lỗi ứng dụng, siêu dữ liệu phiên.</li>
+                </ul>
+              </div>
+              <div class="p-5 bg-white rounded-2xl shadow-sm border">
+                <h3 class="font-medium mb-2">Nguyên tắc</h3>
+                <ul class="list-disc pl-6 text-sm text-gray-700 space-y-1">
+                  <li>Tối thiểu hóa dữ liệu.</li>
+                  <li>Mã hóa khi truyền (HTTPS/TLS).</li>
+                  <li>Xoá theo yêu cầu hợp lệ của chủ thể dữ liệu.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Roadmap -->
+          <div class="mt-10">
+            <h2 class="text-2xl font-semibold mb-3">Lộ trình sản phẩm</h2>
+            <ul class="text-gray-700 space-y-2">
+              <li><span class="font-medium">Q4/2025:</span> Bộ cảnh báo linh hoạt, đa người nhận.</li>
+              <li><span class="font-medium">Q1/2026:</span> Báo cáo sự cố theo tuần/tháng, xuất CSV.</li>
+              <li><span class="font-medium">Q2/2026:</span> Tùy chọn lưu trữ cục bộ tại cơ sở.</li>
+            </ul>
+            <p class="text-xs text-gray-500 mt-2">Cập nhật lần cuối: 06/11/2025</p>
+          </div>
+        </section>
+
+        <hr class="my-6">
+
+        <!-- PRIVACY -->
+        <section id="privacy" aria-labelledby="privacy-title">
+          <h2 id="privacy-title" class="text-3xl font-bold mb-4">Chính sách quyền riêng tư</h2>
+          <p class="mb-6 text-gray-700">
+            Tài liệu này giải thích cách GuardianCare xử lý dữ liệu cá nhân khi bạn dùng dịch vụ.
+            Nguyên tắc: thu thập tối thiểu, minh bạch, tôn trọng quyền của chủ thể dữ liệu.
+            <span class="text-xs text-gray-500 block mt-2">Cập nhật: 06/11/2025</span>
+          </p>
+
+          <h3 class="text-xl font-semibold mb-2">1. Dữ liệu thu thập</h3>
+          <ul class="list-disc pl-6 space-y-1 text-gray-700">
+            <li>Tài khoản: email, tên hiển thị.</li>
+            <li>Sự kiện phát hiện: thời gian, trạng thái, mã thiết bị, cấu hình cảnh báo.</li>
+            <li>Nhật ký kỹ thuật: lỗi, siêu dữ liệu phiên để khắc phục sự cố.</li>
+          </ul>
+          <p class="text-sm text-gray-600 mt-2">Không thu nội dung video/âm thanh trừ khi bạn bật rõ ràng một tính năng lưu trữ (nếu có cung cấp).</p>
+
+          <h3 class="text-xl font-semibold mt-6 mb-2">2. Mục đích xử lý</h3>
+          <ul class="list-disc pl-6 space-y-1 text-gray-700">
+            <li>Cung cấp và duy trì dịch vụ cảnh báo.</li>
+            <li>Phát hiện và xử lý sự cố, cải thiện hiệu năng.</li>
+            <li>Tuân thủ yêu cầu pháp lý khi có yêu cầu hợp lệ.</li>
+          </ul>
+
+          <h3 class="text-xl font-semibold mt-6 mb-2">3. Cơ sở pháp lý</h3>
+          <p class="text-gray-700">Sự đồng ý của bạn, thực hiện hợp đồng dịch vụ, và lợi ích chính đáng nhằm bảo vệ an toàn người dùng.</p>
+
+          <h3 class="text-xl font-semibold mt-6 mb-2">4. Lưu trữ & bảo mật</h3>
+          <ul class="list-disc pl-6 space-y-1 text-gray-700">
+            <li>Mã hóa khi truyền qua HTTPS/TLS.</li>
+            <li>Giới hạn truy cập nội bộ theo vai trò.</li>
+            <li>Thời hạn lưu sự kiện mặc định: 90 ngày, có thể cấu hình theo gói.</li>
+          </ul>
+          <p class="text-sm text-gray-600 mt-2">Thời hạn lưu có thể thay đổi theo yêu cầu pháp lý hoặc theo hợp đồng.</p>
+
+          <h3 class="text-xl font-semibold mt-6 mb-2">5. Chia sẻ bên thứ ba</h3>
+          <p class="text-gray-700">Có thể dùng nhà cung cấp hạ tầng và phân tích. Không bán dữ liệu cá nhân. Mọi chia sẻ nhằm vận hành dịch vụ.</p>
+
+          <h3 class="text-xl font-semibold mt-6 mb-2">6. Quyền của bạn</h3>
+          <ul class="list-disc pl-6 space-y-1 text-gray-700">
+            <li>Truy cập, chỉnh sửa, tải xuống dữ liệu phù hợp.</li>
+            <li>Yêu cầu xoá dữ liệu, trừ khi luật yêu cầu lưu.</li>
+            <li>Rút lại sự đồng ý đối với các xử lý dựa trên đồng ý.</li>
+          </ul>
+          <p class="text-gray-700 mt-2">Liên hệ: <a class="underline" href="mailto:privacy@guardiancare.app">privacy@guardiancare.app</a></p>
+        </section>
+
+        <hr class="my-6">
+
+        <!-- TERMS -->
+        <section id="terms" aria-labelledby="terms-title">
+          <h2 id="terms-title" class="text-3xl font-bold mb-4">Điều khoản sử dụng</h2>
+
+          <h3 class="text-xl font-semibold mb-2">1. Chấp nhận điều khoản</h3>
+          <p class="text-gray-700">Sử dụng GuardianCare đồng nghĩa bạn đồng ý các điều khoản này. Nếu không đồng ý, vui lòng ngừng sử dụng.</p>
+
+          <h3 class="text-xl font-semibold mt-6 mb-2">2. Tài khoản</h3>
+          <ul class="list-disc pl-6 space-y-1 text-gray-700">
+            <li>Bảo mật thông tin đăng nhập là trách nhiệm của bạn.</li>
+            <li>Không sử dụng dịch vụ cho mục đích trái luật.</li>
+          </ul>
+
+          <h3 class="text-xl font-semibold mt-6 mb-2">3. Dịch vụ</h3>
+          <p class="text-gray-700">
+            Dịch vụ cung cấp “như hiện có”. Hiệu quả phát hiện phụ thuộc thiết bị, môi trường, cấu hình.
+            Nên dùng như một lớp hỗ trợ, không thay thế chăm sóc trực tiếp.
+          </p>
+
+          <h3 class="text-xl font-semibold mt-6 mb-2">4. Nội dung & quyền sở hữu</h3>
+          <p class="text-gray-700">Bạn giữ quyền với dữ liệu của mình. Bạn cấp quyền xử lý dữ liệu để vận hành dịch vụ.</p>
+
+          <h3 class="text-xl font-semibold mt-6 mb-2">5. Trách nhiệm</h3>
+          <p class="text-gray-700">Trong phạm vi luật cho phép, không chịu trách nhiệm cho thiệt hại gián tiếp, đặc biệt, hoặc hệ quả phát sinh.</p>
+
+          <h3 class="text-xl font-semibold mt-6 mb-2">6. Tạm ngừng/chấm dứt</h3>
+          <p class="text-gray-700">Có thể tạm ngừng hoặc chấm dứt truy cập nếu có vi phạm điều khoản hoặc lý do vận hành hợp lý.</p>
+
+          <p class="text-xs text-gray-500 mt-4">Cập nhật: 06/11/2025</p>
+        </section>
+
+        <hr class="my-6">
+
+        <!-- SECURITY -->
+        <section id="security" aria-labelledby="security-title">
+          <h2 id="security-title" class="text-3xl font-bold mb-4">Bảo mật & công bố lỗ hổng</h2>
+
+          <h3 class="text-xl font-semibold mb-2">1. Nguyên tắc bảo mật</h3>
+          <ul class="list-disc pl-6 space-y-1 text-gray-700">
+            <li>Mã hóa khi truyền (HTTPS/TLS).</li>
+            <li>Quyền truy cập theo vai trò tối thiểu.</li>
+            <li>Ghi nhận và giám sát nhật ký sự cố.</li>
+          </ul>
+
+          <h3 class="text-xl font-semibold mt-6 mb-2">2. Quản lý lỗ hổng</h3>
+          <p class="text-gray-700">Nếu phát hiện vấn đề bảo mật, vui lòng thông báo có trách nhiệm:</p>
+          <ul class="list-disc pl-6 space-y-1 text-gray-700">
+            <li>Gửi báo cáo tới <a class="underline" href="mailto:security@guardiancare.app">security@guardiancare.app</a>.</li>
+            <li>Không khai thác hoặc công bố công khai trước khi có bản vá.</li>
+            <li>Cung cấp mô tả, PoC, phạm vi ảnh hưởng nếu có.</li>
+          </ul>
+          <p class="text-sm text-gray-600 mt-2">Chúng tôi đánh giá mức độ ưu tiên và phản hồi trong khả năng nhanh nhất.</p>
+
+          <h3 class="text-xl font-semibold mt-6 mb-2">3. Thời hạn lưu & sao lưu</h3>
+          <p class="text-gray-700">Sự kiện được lưu tối đa 90 ngày theo mặc định, có sao lưu theo chính sách vận hành. Thay đổi sẽ cập nhật tại đây.</p>
+          <p class="text-xs text-gray-500 mt-2">Cập nhật: 06/11/2025</p>
+        </section>
+      </div>
+
+      <!-- Side TOC -->
+      <aside class="lg:col-span-3">
+        <div class="toc-sticky bg-white border rounded-2xl p-4 shadow-sm">
+          <p class="font-semibold mb-3">Mục lục</p>
+          <ol class="space-y-2 text-sm">
+            <li><a class="underline" href="#about">Về GuardianCare</a></li>
+            <li><a class="underline" href="#privacy">Chính sách quyền riêng tư</a></li>
+            <li><a class="underline" href="#terms">Điều khoản sử dụng</a></li>
+            <li><a class="underline" href="#security">Bảo mật & công bố lỗ hổng</a></li>
+          </ol>
+          <div class="mt-4 text-xs text-gray-500">
+            Mẹo: nhấn <span class="kbd">Alt</span> + <span class="kbd">↑/↓</span> để lướt nhanh giữa các thẻ mục lục (trình duyệt hỗ trợ).
+          </div>
+        </div>
+      </aside>
+    </div>
   </main>
+
   <custom-footer></custom-footer>
+
+  <!-- Social FAB -->
+  <div class="gc-fab" aria-label="Liên kết mạng xã hội">
+    <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook" style="width:22px;height:22px"/>
+    </a>
+    <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" style="width:22px;height:22px"/>
+    </a>
+    <a href="https://zalo.me/" target="_blank" rel="noopener noreferrer" aria-label="Zalo">
+      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/zalo.svg" alt="Zalo" style="width:22px;height:22px"/>
+    </a>
+  </div>
+
+  <!-- Scripts -->
   <script src="components/navbar.js"></script>
   <script src="components/footer.js"></script>
   <script src="assets/js/script.js"></script>
-
-<style>
-.gc-fab { position: fixed; right: 16px; bottom: 16px; display: flex; flex-direction: column; gap: 10px; z-index: 60; }
-.gc-fab a { width: 48px; height: 48px; border-radius: 9999px; display: flex; align-items: center; justify-content: center;
-  background: white; box-shadow: 0 4px 14px rgba(0,0,0,0.15); border: 1px solid #e5e7eb; text-decoration: none; }
-</style>
-<div class="gc-fab">
-  <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="fb" style="width:22px;height:22px"/></a>
-  <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="ig" style="width:22px;height:22px"/></a>
-  <a href="https://zalo.me/" target="_blank" aria-label="Zalo"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/zalo.svg" alt="zalo" style="width:22px;height:22px"/></a>
-</div>
-
   <script src="assets/js/social-links.js"></script>
+  <script>window.feather && window.feather.replace?.();</script>
 </body>
 </html>

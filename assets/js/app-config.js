@@ -2,7 +2,7 @@
 // Social links
 window.SOCIAL_LINKS = {
   "facebook": "https://www.facebook.com/people/Guardian-Care-FPTU/100086061074330",
-  "instagram": "https://www.instagram.com/yourpage",
+  "instagram": "https://www.instagram.com/guardian_care_fptu",
   "zalo": "https://zalo.me/g/iguxgq111"
 };
 
